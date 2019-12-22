@@ -1,0 +1,607 @@
+#home, #css, #about{
+    height:auto;
+    min-height: 100vh;
+    padding-top: 2em;
+}
+
+/*
+    Default style & variables
+*/
+
+:root{
+    --grey: rgb(119,119,119);
+    --grey-u1: rgb(169,169,169);
+    --grey-u2: #dddddd;
+    --black : rgb(0,0,0);
+    --black-u1 : rgb(30, 30, 30);
+    --black-u2 : rgb(40,40,40);
+    --white : rgb(255,255,255);
+
+    --blue: #30A0E0;
+    --red: #ff4d4d;
+    --yellow: #f7b731;
+    --green: #20bf6b;
+    --pink: #F87DA9;
+}
+
+html {
+    box-sizing: border-box;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    font-family: 'Quicksand', sans-serif !important;
+}
+
+body {
+    color: var(--grey);
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+  }
+::-webkit-scrollbar-track {
+    background: transparent; 
+    border-radius: 2px;
+
+}
+     ::-webkit-scrollbar-thumb {
+    background:var(--black-u2); 
+    border-radius: 2px;
+
+  }
+    ::-webkit-scrollbar-thumb:hover {
+    background: var(--black); 
+  }
+
+/*
+    Navbar and Sidebar
+*/
+
+nav {
+    background: black;
+    height: 40px;
+    position: relative;
+    width: 100%;
+}
+
+nav .title-nav{
+    margin-left: 20px;
+    padding-top: 5px;
+}
+
+nav ul li, .sidebar-btn{ display: inline-block;}
+nav ul li:not(:first-child) {margin-left: 20px;}
+nav ul li:last-child {margin-right: 25px;}
+
+nav .sub-menu-list {
+    margin-left:-50px !important;
+    top:38px;
+}
+nav .sub-menu-list li {
+    margin-left:0px !important;
+    margin-right: 0px;
+    top:40px;
+    width: 100%;
+}
+
+.sidebar {
+    top: 40px;
+    height: 100%;
+    width: 200px;
+    background-color: var(--black);
+    position: absolute;
+    z-index: 1;
+    overflow: auto;
+}
+
+.sidebar-btn {
+    position: relative;
+    width: 40px;
+    height: 100%;
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--white);
+    margin: 0px;
+}
+.menu-list, .sub-menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sub-menu-list {
+    background-color: var(--black-u1);
+}
+
+.menu-list a:hover,  .sub-menu-list a:hover  {
+    background-color: var(--black-u2);
+    cursor: pointer;
+}
+
+.menu-list li:hover .sub-menu-list{
+    display: block;
+    max-height: 100%;
+}
+.sub-menu-list {
+    margin-left:50px;
+    max-width: 200px;
+    min-width: 150px;
+    position: fixed;
+    overflow: hidden;
+    max-height: 0;
+}
+@media only screen and (max-width:992px) {
+    .sidebar{
+        width:100%;
+        height: auto;
+     }    
+    .sub-menu-list {
+        position: relative;
+        margin-left: 0px !important;
+        max-width: 100%;
+
+    }
+    .sub-menu-list li{
+        width: 100%;
+                
+    }
+ }
+
+/*
+    Fonts
+*/
+
+p{
+    text-align: justify;
+}
+
+.title{
+    font-size: 18px;
+    margin-left: 20px;
+}
+h1{
+    font-size: 45px;
+}
+h2{
+    font-size: 40px;
+}
+h3{
+    font-size: 35px;
+}
+h4{
+    font-size: 30px;
+}
+h5{
+    font-size: 25px;
+}
+h6{
+    font-size: 20px;
+}
+
+/*
+    Components
+*/
+audio{
+    outline: none;
+    width: 100%;
+}
+
+[type="radio"]:checked,[type="checkbox"]:checked,[type="checkbox"]:not(:checked),
+[type="radio"]:not(:checked) {
+    position: absolute;
+    left: -9999px;
+}
+[type="radio"]:checked + label, [type="checkbox"]:checked + label,
+[type="radio"]:not(:checked) + label, [type="checkbox"]:not(:checked) + label
+{
+    position: relative;
+    padding-left: 25px;
+    padding-right: 6px;
+    cursor: pointer;
+    line-height: 20px;
+    display: inline-block;
+    
+}
+[type="radio"]:checked + label:before, [type="radio"]:not(:checked) + label:before,
+[type="checkbox"]:checked + label:before, [type="checkbox"]:not(:checked) + label:before{
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 18px;
+    height: 18px;
+    border: 1px solid var(--grey);
+    border-radius: 100%;
+}
+
+
+[type="radio"]:checked + label:after, [type="radio"]:not(:checked) + label:after,
+[type="checkbox"]:checked + label:after, [type="checkbox"]:not(:checked) + label:after{
+    content: '';
+    width: 12px;
+    height: 12px;
+    background: var(--blue);
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+[type="radio"]:not(:checked) + label:after, [type="checkbox"]:not(:checked) + label:after {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+
+nav a, .sidebar a{
+    display: block;
+}
+
+a{
+    text-decoration: none;
+    padding: 8px;
+}
+
+button{
+    border: 0px;
+}
+
+.btn, input, select, textarea{
+    border: 0px;
+    outline: none;
+    padding: 5px;
+    width: 100%;
+    height: 100%;
+    font-family: 'Quicksand', sans-serif !important;
+}
+
+textarea{
+    border-radius: 4px;
+    border: 1px solid var(--grey-u2);
+    min-height: 75px;
+}
+textarea.no-resize{
+    resize: none;
+}
+
+button{
+    font-weight: bold;
+}
+
+button:hover, select:hover{
+    cursor: pointer;
+}
+
+.btn{
+    background: transparent;
+    color: var(--black);
+    text-transform: uppercase;
+    border-radius: 4px;
+}
+.btn-ok{
+    border: 1px solid var(--blue);
+    color: var(--blue);
+}
+.btn-success{
+    border: 1px solid var(--green);   
+    color: var(--green); 
+}
+.btn-danger{
+    border: 1px solid var(--red);   
+    color: var(--red); 
+}
+.btn-warning{
+    border: 1px solid var(--yellow);   
+    color: var(--yellow); 
+}
+.btn-dark{
+    border: 1px solid var(--black-u2);   
+    color: var(--black-u2); 
+}
+
+.btn:hover{
+    transition: .3s;
+    box-shadow: 0 0 13px rgba(33,33,33,.4); 
+}
+.btn-sideff:hover{
+    padding-right: 15%;
+}
+input{
+    border-bottom: 2px solid var(--grey-u1);
+}
+
+.input-box span{
+    font-weight: bold;
+    position: relative;
+    font-size: 11px ;
+}
+
+.input-box:hover > input{
+    border-bottom: 2px solid var(--blue);
+}
+.input-box:hover > span{
+   color: var(--blue);
+}
+
+table, thead, tbody{
+    width: 100%;
+    height: 100%;
+    border-spacing: 0;
+    position: relative;
+}
+
+thead tr th{
+    border-bottom: 1px solid var(--grey-u2);
+}
+
+
+tbody.zebra tr:nth-child(even) {
+    background-color: var(--grey-u2);
+  }
+
+.tab {
+    overflow: hidden;
+    border-bottom: 1px solid var(--grey-u2);
+  }
+  
+  .tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 10px 12px;
+    transition: 0.3s;
+    color: var(--grey);
+  }
+  
+  .tab button:hover {
+    background-color:var(--grey-u2);
+  }
+  
+  .tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid var(--grey-u2);
+    border-top: none;
+    box-shadow: 0px 2px 6px rgba(0,0,0,.1);
+}
+
+.alert {
+
+    line-height: 1.3em;
+    padding: 10px 15px;
+    margin: 5px 10px;
+    border-radius: 5px;
+    transition: opacity 0.5s ease-in;
+
+    font-size: 16px;
+    background-color: rgba(0,0,0,.9);
+    color: white;
+    display: inline;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+}
+
+
+img.img{
+    display: block;
+    width: 100%;
+    height: auto;
+}
+img:hover{
+    cursor: pointer;
+}
+.overlay {
+    position: absolute;
+    top: 5px;
+    bottom: 0px;
+    left: 7px;
+    right: 8px;
+
+    opacity: 0;
+    transition: .5s ease;
+    background: rgba(0,0,0,.4);
+  }
+  
+  .img-container:hover .overlay {
+    opacity: 1;
+  }
+  .img-container{
+    position: relative;
+  }
+  
+  .img-container .text {
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+  }
+
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+.modal {
+    display: none;
+    position: fixed; 
+    z-index: 1; 
+    padding-top: 100px; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.9);
+  }
+  
+  .modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+  }
+  
+  #caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+  }
+
+  .modal-content, #caption {  
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+  }
+  
+
+/*
+    Others
+*/
+
+.link:hover{
+    color: var(--blue);
+}
+
+.left{
+    float: left;
+}
+
+.right{
+    float: right;
+}
+
+.txt-center{
+    text-align: center;
+}
+
+.txt-white{
+    color: var(--white);
+}
+.txt-black{
+    color: var(--black);
+}
+.txt-blue{
+    color: var(--blue);
+}
+.txt-grey{
+    color: var(--grey);
+}
+.txt-yellow{
+    color:var(--yellow);
+}
+
+.txt-big{
+    font-size: 26px;    
+}
+.txt-medium{
+    font-size: 18px;
+}
+.txt-small{
+    font-size: 11px;
+}
+
+.white{
+    background: var(--white);
+}
+.black{
+    background: var(--black);
+}
+.red{
+    background: var(--red);
+}
+.blue{
+    background: var(--blue);
+}
+.green{
+    background: var(--green);
+}
+.yellow{
+    background: var(--yellow);
+}
+.hidden{
+    display: none;
+}
+.full{
+    top:0px;
+    height: 100%;
+    position: fixed;
+}
+.resizable{
+    width:auto;
+}
+.wave-effect:hover{
+    background: rgb(231, 234, 235) !important;
+}
+
+
+.enigma-btn{
+    border-radius: 50%;
+    outline: none;
+    margin: 8px;
+    padding: 8px;
+    font-weight: bold;
+    background-color: rgba(51, 51, 51, 0.808);
+    color: white;
+    border: 1px solid rgba(51, 51, 51, 0.808);
+ 
+}
+
+.enigma-btn.btn-press{
+    border-left: 1px solid white;
+
+}
+.enigma-btn.btn-press:active{
+    padding: 6px;
+    font-weight: normal;
+
+}
+
+.minor{
+    margin-left:25px;
+}
+
+.cursor{
+    font-size: 20px;
+    font-weight: bold;
+    border: 1px solid white;
+    padding: 8px;
+}
+
+.btn-plug{
+    width:15px;
+    height:15px;
+    margin: 2px;
+    margin-left: 1px;
+    padding:3px;
+}
+@media only screen and (max-width: 601px) {
+.enigma-btn{
+    margin: 6px;
+    padding: 4px;
+}
+
+}
+
+select option{
+ background: black;
+ border: none;   
+}

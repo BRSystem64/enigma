@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- 
+        credits icon: Freepik
+        https://www.flaticon.com/packs/animal-kingdom
+    -->
+    <link rel="icon" href="icon/icon.png">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+    <title> Enigma Machine </title>
+
+    <!-- Futher Style -->
+    <link rel="stylesheet" href="css/further.css" />
+    <link rel="stylesheet" href="css/further-grid.css" />
+
+    <!-- Font-->
+    <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="sidebar left hidden" id="sidebar">
+        <div class="title-sidebar">
+            <label class="title txt-white"> Rotors </label>
+        </div>
+        <ul class="menu-list">
+            <li> Rotor I
+                <select id="router1" class="btn dark txt-white">
+                    <option>I</option>
+                    <option>II</option>
+                    <option>III</option>
+                    <option>IV</option>
+                    <option>V</option>
+                </select>
+            </li>
+            <li> Rotor II
+                <select id="router2" class="btn dark txt-white">
+                    <option>I</option>
+                    <option>II</option>
+                    <option>III</option>
+                    <option>IV</option>
+                    <option>V</option>
+                </select>
+            </li>
+            <li> Rotor III
+                <select id="router3" class="btn dark txt-white">
+                    <option>I</option>
+                    <option>II</option>
+                    <option>III</option>
+                    <option>IV</option>
+                    <option>V</option>
+                </select>
+            </li>
+        </ul>
+        <div class="title-sidebar">
+            <label class="title txt-white"> Reflector </label>
+        </div>
+        <ul class="menu-list  ">
+            <li> Reflector
+
+                <select id="reflector" class="btn dark txt-white">
+                    <option selected>A</option>
+                    <option>B</option>
+                    <option>C</option>
+                </select>
+            </li>
+        </ul>
+
+        <div class="title-sidebar">
+            <label class="title txt-white"> Rings </label>
+        </div>
+        <ul class="menu-list  ">
+            <li> Ring I
+                <select id="ring1" class="btn dark txt-white">
+                </select>
+            </li>
+            <li> Ring II
+                <select id="ring2" class="btn dark txt-white">
+                </select>
+            </li>
+            <li> Ring III
+                <select id="ring3" class="btn dark txt-white">
+                </select>
+            </li>
+    </div>
+    </div>
+    
+    <nav class="">
+        <button class="sidebar-btn left txt-white black" onClick="sidebar()"> ☰ </button>
+        <div class="title-nav left">
+            <label class="title txt-white "> ENIGMA MACHINE</label> </label>
+        </div>
+    </nav>
+
+
+    <div class="container">
+        <div class="row ">
+            <div class="col s3 off-l4 l1">
+                <button class="btn" onClick="init()"> start </button>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col l5 s12 black">
+                <p>
+                </p>
+                <div class="row">
+                    <div class="col l1 s1 off-s3 off-l3">
+                        <label id="cursor1" class="cursor">A</label>
+                    </div>
+                    <div class="col l1 s1 off-s1 off-l1">
+                        <label id="cursor2" class="cursor">A</label>
+                    </div>
+                    <div class="col l1 s1 off-s1 off-l1">
+                        <label id="cursor3" class="cursor">A</label>
+                    </div>
+                </div>
+                <p />
+                <div class="row">
+                    <div class="col l12 s12 ">
+                        <button id="Q" class="enigma-btn"> Q </button>
+                        <button id="W" class="enigma-btn"> W </button>
+                        <button id="E" class="enigma-btn"> E </button>
+                        <button id="R" class="enigma-btn"> R </button>
+                        <button id="T" class="enigma-btn"> T </button>
+                        <button id="Z" class="enigma-btn"> Z </button>
+                        <button id="U" class="enigma-btn"> U </button>
+                        <button id="I" class="enigma-btn"> I </button>
+                        <button id="O" class="enigma-btn"> O </button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col l12 s12 minor">
+                        <button id="A" class="enigma-btn"> A </button>
+                        <button id="S" class="enigma-btn"> S </button>
+                        <button id="D" class="enigma-btn"> D </button>
+                        <button id="F" class="enigma-btn"> F </button>
+                        <button id="G" class="enigma-btn"> G </button>
+                        <button id="H" class="enigma-btn"> H </button>
+                        <button id="J" class="enigma-btn"> J </button>
+                        <button id="K" class="enigma-btn"> K </button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col l12 s12">
+                        <button id="P" class="enigma-btn"> P </button>
+                        <button id="Y" class="enigma-btn"> Y </button>
+                        <button id="X" class="enigma-btn"> X </button>
+                        <button id="C" class="enigma-btn"> C </button>
+                        <button id="V" class="enigma-btn"> V </button>
+                        <button id="B" class="enigma-btn"> B </button>
+                        <button id="N" class="enigma-btn"> N </button>
+                        <button id="M" class="enigma-btn"> M </button>
+                        <button id="L" class="enigma-btn"> L </button>
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col l12 s12">
+                        <button class="enigma-btn btn-press" onClick="typeBtn('Q')"> Q </button>
+                        <button class="enigma-btn btn-press" onClick="typeBtn('W')"> W </button>
+                        <button class="enigma-btn btn-press" onClick="typeBtn('E')"> E </button>
+                        <button class="enigma-btn btn-press" onClick="typeBtn('R')"> R </button>
+                        <button class="enigma-btn btn-press" onClick="typeBtn('T')"> T </button>
+                        <button class="enigma-btn btn-press" onClick="typeBtn('Z')"> Z </button>
+                        <button class="enigma-btn btn-press" onClick="typeBtn('U')"> U </button>
+                        <button class="enigma-btn btn-press" onClick="typeBtn('I')"> I </button>
+                        <button class="enigma-btn btn-press" onClick="typeBtn('O')"> O </button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col l12 s12 minor">
+                        <button class="enigma-btn btn-press" onClick="typeBtn('A')"> A </button>
+                        <button class="enigma-btn btn-press" onClick="typeBtn('S')"> S </button>
+                        <button class="enigma-btn btn-press" onClick="typeBtn('D')"> D </button>
+                        <button class="enigma-btn btn-press" onClick="typeBtn('F')"> F </button>
+                        <button class="enigma-btn btn-press" onClick="typeBtn('G')"> G </button>
+                        <button class="enigma-btn btn-press" onClick="typeBtn('H')"> H </button>
+                        <button class="enigma-btn btn-press" onClick="typeBtn('J')"> J </button>
+                        <button class="enigma-btn btn-press" onClick="typeBtn('K')"> K </button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col l12 s12">
+                        <button class="enigma-btn btn-press" onClick="typeBtn('P')"> P </button>
+                        <button class="enigma-btn btn-press" onClick="typeBtn('Y')"> Y </button>
+                        <button class="enigma-btn btn-press" onClick="typeBtn('X')"> X </button>
+                        <button class="enigma-btn btn-press" onClick="typeBtn('C')"> C </button>
+                        <button class="enigma-btn btn-press" onClick="typeBtn('V')"> V </button>
+                        <button class="enigma-btn btn-press" onClick="typeBtn('B')"> B </button>
+                        <button class="enigma-btn btn-press" onClick="typeBtn('N')"> N </button>
+                        <button class="enigma-btn btn-press" onClick="typeBtn('M')"> M </button>
+                        <button class="enigma-btn btn-press" onClick="typeBtn('L')"> L </button>
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col l12 s12">
+                        A <button class="enigma-btn btn-plug"> </button>
+                        B <button class="enigma-btn btn-plug"> </button>
+                        C <button class="enigma-btn btn-plug"> </button>
+                        D <button class="enigma-btn btn-plug"> </button>
+                        E <button class="enigma-btn btn-plug"> </button>
+                        F <button class="enigma-btn btn-plug"> </button>
+                        G <button class="enigma-btn btn-plug"> </button>
+                        H <button class="enigma-btn btn-plug"> </button>
+                        I <button class="enigma-btn btn-plug"> </button>
+                        J <button class="enigma-btn btn-plug"> </button>
+                        K <button class="enigma-btn btn-plug"> </button>
+                        L <button class="enigma-btn btn-plug"> </button>
+                        M <button class="enigma-btn btn-plug"> </button>
+                        <br>
+                        N <button class="enigma-btn btn-plug"> </button>
+                        O <button class="enigma-btn btn-plug"> </button>
+                        P <button class="enigma-btn btn-plug"> </button>
+                        Q <button class="enigma-btn btn-plug"> </button>
+                        R <button class="enigma-btn btn-plug"> </button>
+                        S <button class="enigma-btn btn-plug"> </button>
+                        T <button class="enigma-btn btn-plug"> </button>
+                        U <button class="enigma-btn btn-plug"> </button>
+                        V <button class="enigma-btn btn-plug"> </button>
+                        W <button class="enigma-btn btn-plug"> </button>
+                        X <button class="enigma-btn btn-plug"> </button>
+                        Y <button class="enigma-btn btn-plug"> </button>
+                        Z <button class="enigma-btn btn-plug"> </button>
+                    </div>
+                </div>
+                <p />
+            </div>
+
+            <div class="col l5 off-l1">
+                <textarea readonly class="txtMessage only-desktop" id="message" style="resize:none;height: 220px;">
+
+        </textarea>
+            </div>
+
+            <div class="col l5 off-l1">
+                <strong>1. Use the sidebar to configure the rotors and rings.</strong></p>
+                <strong>2. Press start to init the machine.</strong></p>
+                <strong>3. Use your keyboard or Enigma's Keyboard to type.</strong></p>
+                <strong>4. Copy the message on Panel and Share with your friends.</strong></p>
+                <br /><br />
+
+                <strong>Did you like it? Give me a feedback on<a class="txt-blue"
+                        href="https://www.linkedin.com/in/bruno-bastos-537415135/">linkedIn</a>, and read more about
+                    Enigma machine<a class="txt-blue"
+                        href="https://en.wikipedia.org/wiki/Enigma_machine">here</a></strong>.
+            </div>
+        </div>
+
+    </div>
+    <!-- Scripts Load -->
+    <script src="js/further.js"></script>
+    <script src="enigma/enigma.js"></script>
+    <script src="enigma/Action.js"></script>
+
+
+    </script>
+
+</body>
+
+
+</html>
